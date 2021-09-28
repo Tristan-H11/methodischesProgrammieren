@@ -8,7 +8,6 @@ object HelloWorld {
 
     /**
      * Returns a Hello World Statement.
-     * @return "Hello World!"
      */
     def getHelloWorld: String = {
         HELLO_WORLD
