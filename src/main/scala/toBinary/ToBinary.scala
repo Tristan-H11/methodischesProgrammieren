@@ -1,8 +1,6 @@
 package toBinary
 
-import scala.annotation.tailrec
 import scala.collection.mutable.ListBuffer
-import scala.language.postfixOps
 
 /**
  * Singleton for converting Integers from decimal to binary.
@@ -24,6 +22,6 @@ object ToBinary {
             number /= 2
         }
         binary.insert(0, if (number == 1) 1 else 0)
-        binary.toList.mkString("")
+        binary.mkString("")
     }
 }
