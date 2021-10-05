@@ -34,7 +34,7 @@ object Practice {
     Task 4
      */
     def abs(x: Double): Double = {
-        if (x < 0) x * (-1) else x
+        if (x < 0) -x else x
     }
 
     /*
