@@ -34,7 +34,7 @@ object Practice {
     /*
     Task 5
      */
-    val modulo: (Int, Int) => Int = (x:Int, divisor:Int) => x - x/divisor
+    val modulo: (Int, Int) => Int = (x:Int, divisor:Int) => x - divisor * Math.floor(x/divisor).toInt
 
     /*
     Task 6
