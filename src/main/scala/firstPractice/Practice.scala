@@ -52,6 +52,18 @@ object Practice {
     }
 
     /*
+    Task 7
+     */
+    def intersectionWithCoefficient(a1: Double, b1: Double, a2: Double, b2: Double): String = {
+        val x = (b2 - b1) / (a2 - a1)
+        val y = a1 * x + b1
+        s"<$x>, <$y>"
+    }
+
+    def intersectionWithPoints(p1a: (Double, Double), p1b: (Double, Double),
+                               p2a: (Double, Double), p2b: (Double, Double)): String = ???
+
+    /*
     Task 8
      */
     def binaryToDecimal(number: Long): Int = {
