@@ -2,7 +2,7 @@ package firstPractice
 
 import scala.annotation.tailrec
 
-object practice {
+object Practice {
 
     /*
     Write a method to sum up all values 0..x not divisible by y
