@@ -4,7 +4,31 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class PracticeTest extends AnyFunSuite {
     test("SumAllNotDivisible 7,3 = 19") {
-        assert(practice.sumAllNotDivisible(7, 3) == 19)
+        assert(Practice.sumAllNotDivisible(7, 3) == 19)
+    }
+
+    test("square 4 = 16"){
+        assert(Practice.square(4) == 16)
+    }
+
+    test("max 2<4"){
+        assert(Practice.max(2,4) == 4)
+    }
+
+    test("max 2==2"){
+        assert(Practice.max(2,2)==2)
+    }
+
+    test("abs(-1)=1"){
+        assert(Practice.abs(-1)==1)
+    }
+
+    test("abs(1)=1"){
+        assert(Practice.abs(1)==1)
+    }
+
+    test("3 mod 2 = 1"){
+        assert(Practice.modulo(3,2) == 3 % 2)
     }
 
     test("factorial"){
