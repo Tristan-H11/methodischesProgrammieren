@@ -35,6 +35,20 @@ class PracticeTest extends AnyFunSuite {
         assert(Practice.factorial(20) == 2432902008176640000L )
     }
 
+    test("No intersection with coefficients because of parallel lines"){
+        assert(Practice.intersectionWithCoefficient(2, 1, 2, 0).equals("There is no intersection."))
+    }
+
+    test("Intersection with coefficients in 0, 0"){
+        assert(Practice.intersectionWithCoefficient(-1, 0, 2, 0).equals("<0.0>, <0.0>"))
+    }
+
+    test("No intersection with points because of parallel lines"){
+        assert(Practice.intersectionWithPoints((-1,0), (1,0), (-1,1), (1,1)).equals("There is no intersection."))
+    }
+
+    //TODO Intersection testen...
+
     test("binaryToDecimal 10100=20"){
         assert(Practice.binaryToDecimal(10100) == 20)
     }
