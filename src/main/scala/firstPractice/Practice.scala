@@ -1,7 +1,5 @@
 package firstPractice
 
-import scala.annotation.tailrec
-
 object Practice {
 
     /*
