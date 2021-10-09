@@ -66,22 +66,22 @@ object Practice {
   }
 
   def intersectionWithPoints(pointOneA: (Double, Double), pointOneB: (Double, Double),
-                             pointTwoA: (Double, Double), pointTwoB: (Double, Double)): String ={
-      val a1: Double = pointOneB._2 - pointOneA._2
-      val b1: Double = pointOneA._1 - pointOneB._2
-      val c1: Double = a1 * pointOneA._1 + b1 * pointOneA._2
+                             pointTwoA: (Double, Double), pointTwoB: (Double, Double)): String = {
+    val a1: Double = pointOneB._2 - pointOneA._2
+    val b1: Double = pointOneA._1 - pointOneB._2
+    val c1: Double = a1 * pointOneA._1 + b1 * pointOneA._2
 
-      val a2: Double = pointTwoB._2 - pointTwoA._2
-      val b2: Double = pointTwoA._1 - pointTwoB._2
-      val c2: Double = a2 * pointOneA._1 + b2 * pointOneA._2
+    val a2: Double = pointTwoB._2 - pointTwoA._2
+    val b2: Double = pointTwoA._1 - pointTwoB._2
+    val c2: Double = a2 * pointOneA._1 + b2 * pointOneA._2
 
-      val det: Double = a1*b2 - a2*b1
+    val det: Double = a1 * b2 - a2 * b1
 
-      if(det == 0 ) {
-        "There is no intersection."
-      } else {
-        s"<${(b2 * c1 - b1 * c2) / det}>, <${(a1 * c2 - a2 * c1) / det}>"
-      }
+    if (det == 0) {
+      "There is no intersection."
+    } else {
+      s"<${(b2 * c1 - b1 * c2) / det}>, <${(a1 * c2 - a2 * c1) / det}>"
+    }
   }
 
   /*
