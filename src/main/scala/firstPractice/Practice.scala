@@ -60,7 +60,7 @@ object Practice {
       val y = a1 * x + b1
       s"<$x>, <$y>"
     } else {
-      "There is no intersection."
+      "The lines are parallel."
 
     }
   }

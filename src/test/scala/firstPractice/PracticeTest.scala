@@ -36,7 +36,7 @@ class PracticeTest extends AnyFunSuite {
     }
 
     test("No intersection with coefficients because of parallel lines"){
-        assert(Practice.intersectionWithCoefficient(2, 1, 2, 0).equals("There is no intersection."))
+        assert(Practice.intersectionWithCoefficient(2, 1, 2, 0).equals("The lines are parallel."))
     }
 
     test("Intersection with coefficients in 0, 0"){
@@ -44,7 +44,7 @@ class PracticeTest extends AnyFunSuite {
     }
 
     test("No intersection with points because of parallel lines"){
-        assert(Practice.intersectionWithPoints((-1,0), (1,0), (-1,1), (1,1)).equals("There is no intersection."))
+        assert(Practice.intersectionWithPoints((-1,0), (1,0), (-1,1), (1,1)).equals("The lines are parallel."))
     }
 
     //TODO Intersection testen...
