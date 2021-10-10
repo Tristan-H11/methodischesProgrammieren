@@ -64,11 +64,11 @@ class PracticeTest extends AnyFunSuite {
     }
     
     test("binaryToDecimalFromString \"10100\"=20") {
-        assert(Practice.binaryToDecimalFromString("10100") == 20)
+        assert(Practice.binaryToDecimal("10100") == 20)
     }
     
     test("binaryToDecimalFromString \"0\"=0") {
-        assert(Practice.binaryToDecimalFromString("0") == 0)
+        assert(Practice.binaryToDecimal("0") == 0)
     }
     
     test("Revert String to gnirtS") {
