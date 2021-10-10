@@ -80,7 +80,7 @@ object Practice {
     Task 8
      */
     def binaryToDecimal(number: Long): Int = {
-        Integer.parseInt(number.toString, 2)
+        binaryToDecimal(number.toString)
         
         //    var result: Long = 0
         //
@@ -97,8 +97,8 @@ object Practice {
         //    result.toInt
     }
     
-    def binaryToDecimalFromString(number: String): Int = {
-        binaryToDecimal(number.toLong)
+    def binaryToDecimal(number: String): Int = {
+        Integer.parseInt(number, 2)
         
         //    val length: Int = number.length - 1
         //    var result: Int = 0
