@@ -88,11 +88,32 @@ object Practice {
   Task 8
    */
   def binaryToDecimal(number: Long): Int = {
-    Integer.parseInt(number.toString, 2) //too lazy to calc manually
+    Integer.parseInt(number.toString, 2)
+
+//    var result: Long = 0
+//
+//    // Imitates 2^n. Is doubled after every while-iteration.
+//    var base: Long = 1
+//
+//    var temp: Long = number
+//    while (temp > 0) {
+//      val last_digit: Long = temp % 10
+//      temp /= 10
+//      result += last_digit * base
+//      base *= 2
+//    }
+//    result.toInt
   }
 
   def binaryToDecimalFromString(number: String): Int = {
     binaryToDecimal(number.toLong)
+
+//    val length: Int = number.length - 1
+//    var result: Int = 0
+//    for (x <- 1 to length) {
+//      result += (number.charAt(length - x ).asDigit * Math.pow(2, x)).toInt
+//    }
+//    result
   }
 
   /*

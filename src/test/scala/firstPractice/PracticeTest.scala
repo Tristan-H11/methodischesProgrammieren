@@ -53,8 +53,16 @@ class PracticeTest extends AnyFunSuite {
         assert(Practice.binaryToDecimal(10100) == 20)
     }
 
+    test("binaryToDecimal 0=0"){
+        assert(Practice.binaryToDecimal(10100) == 20)
+    }
+
     test("binaryToDecimalFromString \"10100\"=20"){
         assert(Practice.binaryToDecimalFromString("10100") == 20)
+    }
+
+    test("binaryToDecimalFromString \"0\"=0"){
+        assert(Practice.binaryToDecimalFromString("0") == 0)
     }
 
     test("Revert String to gnirtS"){
