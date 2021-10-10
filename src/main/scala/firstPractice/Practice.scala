@@ -39,7 +39,7 @@ object Practice {
   Task 5
    */
   def modulo(x: Int, divisor: Int): Int = {
-    x - divisor * Math.floor(x / divisor).toInt
+    x - divisor * (x / divisor)
   }
 
   /*
