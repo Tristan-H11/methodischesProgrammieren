@@ -19,6 +19,7 @@ object Practice {
      */
     def square(x: Double): Double = {
         Math.pow(x, 2)
+        // x * x
     }
     
     /*
