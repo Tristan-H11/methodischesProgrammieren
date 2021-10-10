@@ -36,18 +36,24 @@ class PracticeTest extends AnyFunSuite {
     }
 
     test("No intersection with coefficients because of parallel lines"){
-        assert(Practice.intersectionWithCoefficient(2, 1, 2, 0).equals("The lines are parallel."))
+        assert(Practice.intersectionWithCoefficient(2, 1, 2, 0) == "The lines are parallel.")
     }
 
     test("Intersection with coefficients in 0, 0"){
-        assert(Practice.intersectionWithCoefficient(-1, 0, 2, 0).equals("<0.0>, <0.0>"))
+        assert(Practice.intersectionWithCoefficient(-1, 0, 1, 0) == "<0.0>, <0.0>")
+    }
+
+    test("Intersection with coefficients in -0.2, -1.4 with FLP-Error"){
+        assert(Practice.intersectionWithCoefficient(17, 2, 2, -1) == "<-0.2>, <-1.4000000000000004>")
     }
 
     test("No intersection with points because of parallel lines"){
-//        assert(Practice.intersectionWithPoints((-1,0), (1,0), (-1,1), (1,1)).equals("The lines are parallel."))
+        assert(Practice.intersectionWithPoints((-1,0), (1,0), (-1,1), (1,1)) == "The lines are parallel.")
     }
 
-    //TODO Intersection testen...
+    test("Intersection with points in -3, -7"){
+        assert(Practice.intersectionWithPoints((-3,-7), (0,2), (-3,-7), (0,-1)) == "<-3.0>, <-7.0>")
+    }
 
     test("binaryToDecimal 10100=20"){
         assert(Practice.binaryToDecimal(10100) == 20)

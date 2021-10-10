@@ -56,32 +56,24 @@ object Practice {
    */
   def intersectionWithCoefficient(a1: Double, b1: Double, a2: Double, b2: Double): String = {
     if (a2 - a1 != 0) {
-      val x = (b2 - b1) / (a2 - a1)
+      val x = 0.0 + (b2 - b1) / (a1 - a2) //Adding 0.0 to manage -0.0
       val y = a1 * x + b1
       s"<$x>, <$y>"
     } else {
       "The lines are parallel."
-
     }
   }
 
   def intersectionWithPoints(pointOneA: (Double, Double), pointOneB: (Double, Double),
                              pointTwoA: (Double, Double), pointTwoB: (Double, Double)): String = {
-    val a1: Double = pointOneB._2 - pointOneA._2
-    val b1: Double = pointOneA._1 - pointOneB._2
-    val c1: Double = a1 * pointOneA._1 + b1 * pointOneA._2
 
-    val a2: Double = pointTwoB._2 - pointTwoA._2
-    val b2: Double = pointTwoA._1 - pointTwoB._2
-    val c2: Double = a2 * pointOneA._1 + b2 * pointOneA._2
+    val a1: Double = (pointOneB._2 - pointOneA._2) / (pointOneB._1 - pointOneA._1)
+    val b1: Double = pointOneA._2 - (a1 * pointOneA._1)
 
-    val det: Double = a1 * b2 - a2 * b1
+    val a2: Double = (pointTwoB._2 - pointTwoA._2) / (pointTwoB._1 - pointTwoA._1)
+    val b2: Double = pointTwoA._2 - (a2 * pointTwoA._1)
 
-    if (det == 0) {
-      "There is no intersection."
-    } else {
-      s"<${(b2 * c1 - b1 * c2) / det}>, <${(a1 * c2 - a2 * c1) / det}>"
-    }
+    intersectionWithCoefficient(a1, b1, a2, b2)
   }
 
   /*
