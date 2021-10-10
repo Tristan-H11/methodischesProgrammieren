@@ -72,7 +72,7 @@ class PracticeTest extends AnyFunSuite {
     }
 
     test("Revert String to gnirtS"){
-        assert(Practice.reverseString("String").equals("gnirtS"))
+        assert(Practice.reverseString("String") == "gnirtS")
     }
 
     test("Count in \"Das ist ein Test\" = 4"){

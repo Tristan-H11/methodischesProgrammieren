@@ -113,6 +113,10 @@ object Practice {
      */
     def reverseString(text: String): String = {
         text.reverse.mkString
+        
+//        var result = ""
+//        text.foreach(c => result = c + result)
+//        result
     }
     
     /*
