@@ -100,26 +100,6 @@ object PracticeOne {
         //    result.toInt
     }
     
-    @tailrec
-    def isPalindromeOne(s: String, acc: Int = 0): Boolean ={
-         if(acc == s.length/2)
-            true
-        else if(s.charAt(acc) != s.charAt(s.length - acc -1))
-            false
-        else
-            isPalindromeOne(s, acc+1)
-    }
-    
-    @tailrec
-    def isPalindromeTwo(s: String): Boolean ={
-        if(s.length <= 1)
-            true
-        else if (s.head != s.charAt(s.length -1))
-            false
-        else
-            isPalindromeTwo(s.substring(1, s.length-1))
-    }
-    
     def binaryToDecimal(number: String): Int = {
         Integer.parseInt(number, 2)
         
