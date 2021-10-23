@@ -1,12 +1,14 @@
 package firstPractice
 
-object Practice {
+import scala.annotation.tailrec
+
+object FirstPractice {
     
     /*
     Write a method to sum up all values 0..x not divisible by y
      */
-    def sumAllNotDivisible(x: Int, y: Int): Int = {
-        (0 to x).filter(e => e % y != 0).sum
+    def sumAllNotDivisible(x: Int, divisor: Int): Int = {
+        (0 to x).filter(e => e % divisor != 0).sum
     }
     
     /*
@@ -98,6 +100,26 @@ object Practice {
         //    result.toInt
     }
     
+    @tailrec
+    def isPalindromeOne(s: String, acc: Int = 0): Boolean ={
+         if(acc == s.length/2)
+            true
+        else if(s.charAt(acc) != s.charAt(s.length - acc -1))
+            false
+        else
+            isPalindromeOne(s, acc+1)
+    }
+    
+    @tailrec
+    def isPalindromeTwo(s: String): Boolean ={
+        if(s.length <= 1)
+            true
+        else if (s.head != s.charAt(s.length -1))
+            false
+        else
+            isPalindromeTwo(s.substring(1, s.length-1))
+    }
+    
     def binaryToDecimal(number: String): Int = {
         Integer.parseInt(number, 2)
         
@@ -115,15 +137,94 @@ object Practice {
     def reverseString(text: String): String = {
         text.reverse.mkString
         
-//        var result = ""
-//        text.foreach(c => result = c + result)
-//        result
+        
+        //        var result = ""
+        //        text.foreach(c => result = c + result)
+        //        result
     }
     
     /*
     Task 10
      */
     def countWords(sentence: String): Int = {
-        sentence.split(" ").length
+        sentence.split("\\s+").length
     }
+    
+    @tailrec
+    def checkParenthesis(input: String, klammerCounter: Int = 0): Boolean = {
+    
+        if(input.length == 1 && input == "("){
+            return klammerCounter == -1
+        }
+    
+        if(input.length == 1 && input == ")"){
+            return klammerCounter == 1
+        }
+        
+        if(input.length == 1){
+            return klammerCounter == 0
+        }
+        if(input.charAt(0) == '('){
+            checkParenthesis(input.tail, klammerCounter +1 )
+        } else if(input.charAt(0) == ')'){
+            checkParenthesis(input.tail, klammerCounter -1 )
+        }
+        else {
+            checkParenthesis(input.tail)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }
+
+/*
+
+Callstack für "Luca"
+
+Call 4: Input: a
+"" + a    <-- Kein Rekursionsschritt mehr
+
+Call 3: Input: ca
+recursion(a) + c    <-- Rekursionsschritt mit recursion() ist gleichbedeutend zur ganzen oberen Zeile
+
+Call 2: Input: uca
+recursion(ca) + u   <-- Rekursionsschritt mit recursion() ist gleichbedeutend zur ganzen oberen Zeile
+
+Call 1: Input: Luca
+recursion(uca) + L <-- Rekursionsschritt mit recursion() ist gleichbedeutend zur ganzen oberen Zeile
+
+
+"" + a +c + u + L => acuL
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
