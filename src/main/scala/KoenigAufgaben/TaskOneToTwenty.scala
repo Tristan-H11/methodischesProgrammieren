@@ -27,23 +27,28 @@ object TaskOneToTwenty {
         }
         result
     }
-    
-    def factorialRecursive(x: Int): Long = if (x == 1) 1 else x * factorialRecursive(x - 1)
+    def factorialRecursive(x: Int): Long = {
+        if (x == 1) {
+            1
+        } else {
+            x * factorialRecursive(x - 1)
+        }
+    }
     
     /*
     Task 7
      */
-    def powerIterative(x: Int, y: Int): Long = {
-        var result: Long = x
-        for (i <- 0 until y) {
-            result *= x
+    def powerIterative(basis: Int, exponent: Int): Long = {
+        var result: Long = basis
+        for (_ <- 1 to exponent) {
+            result *= basis
         }
         result
     }
     
     def powerRecursive(x: Int, y: Int): Long = {
-        if (y == 1)
-            x
+        if (y == 0)
+            1
         else
             x * powerRecursive(x, y - 1)
     }
@@ -98,7 +103,7 @@ object TaskOneToTwenty {
         if (n <= 1) false
         else {
             for (i <- 2 to Math.sqrt(n).toInt) {
-                if( n % i == 0) return false
+                if (n % i == 0) return false
             }
             true
         }
