@@ -128,44 +128,32 @@ object PracticeTwo {
     /*
     Task 10
      */
-    @tailrec
-    def checkParenthesis(input: String, countOpen: Int = 0, countClosed: Int = 0): Boolean= {
-        var openBracket = countOpen
-        var closedBracket = countClosed
-    
-        if (input.charAt(0) == '('){
-            openBracket += 1
-        } else if (input.charAt(0) == ')'){
-            closedBracket += 1
-            if (closedBracket > openBracket){
+    def checkParenthesis(input: String): Boolean ={
+        var mutableInput: String = input
+        if(mutableInput.indexOf(')') < mutableInput.indexOf('('))
+            return false
+        
+        while(mutableInput != "") {
+            val s  = mutableInput.head
+            if(s == ')')
                 return false
+                
+            if(s == '('){
+                if(mutableInput.contains(')')) {
+                    mutableInput= mutableInput.replaceFirst("\\)","")
+                    mutableInput= mutableInput.replaceFirst("\\(","")
+                } else {
+                    return false
+                }
+            }
+            else {
+                mutableInput = mutableInput.tail
+            }
+            
+            if(!mutableInput.contains(')') && !mutableInput.contains('(')){
+                return true
             }
         }
-    
-        if (input.length == 1) {
-            return closedBracket == openBracket
-        }
-        checkParenthesis(input.tail, openBracket, closedBracket)
+        true
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
