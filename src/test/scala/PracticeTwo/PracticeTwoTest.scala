@@ -65,6 +65,10 @@ class PracticeTwoTest extends AnyFunSuite{
         assert(checkParenthesis("()"))
     }
     
+    test("CheckParenthesis ')(' true"){
+        assert(!checkParenthesis(")("))
+    }
+    
     test("CheckParenthesis '(())()' true"){
         assert(checkParenthesis("(())()"))
     }
@@ -80,4 +84,10 @@ class PracticeTwoTest extends AnyFunSuite{
     test("CheckParenthesis '(foo))((bar()' false"){
         assert(!checkParenthesis("(foo))((bar()"))
     }
+    
+    test("CheckParenthesis '(())' true"){
+        assert(checkParenthesis("(())"))
+    }
+
 }
+
