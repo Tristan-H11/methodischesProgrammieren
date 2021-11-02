@@ -1,6 +1,6 @@
 package PracticeDataStructure
 
-class Fraction(numerator: Int, denominator: Int) {
+case class Fraction(numerator: Int, denominator: Int) {
     
     /**
      * Returns a new fraction object with the resulting value.
@@ -8,7 +8,7 @@ class Fraction(numerator: Int, denominator: Int) {
      * @param scalar Scalar that should be added.
      */
     def add(scalar: Int): Fraction = {
-        new Fraction(numerator + scalar * denominator, denominator)
+        Fraction(numerator + scalar * denominator, denominator)
     }
     
     /**
@@ -17,7 +17,7 @@ class Fraction(numerator: Int, denominator: Int) {
      * @param frac Fraction that should be added.
      */
     def add(frac: Fraction): Fraction = {
-        new Fraction(numerator * frac.denominator + denominator * frac.numerator,
+        Fraction(numerator * frac.denominator + denominator * frac.numerator,
             denominator * frac.denominator)
     }
     
@@ -27,7 +27,7 @@ class Fraction(numerator: Int, denominator: Int) {
      * @param scalar Scalar that should be subtracted.
      */
     def subtract(scalar: Int): Fraction = {
-        new Fraction(numerator - scalar * denominator, denominator)
+        Fraction(numerator - scalar * denominator, denominator)
     }
     
     /**
@@ -36,7 +36,7 @@ class Fraction(numerator: Int, denominator: Int) {
      * @param frac Fraction that should be subtracted.
      */
     def subtract(frac: Fraction): Fraction = {
-        new Fraction(numerator * frac.denominator - denominator * frac.numerator,
+        Fraction(numerator * frac.denominator - denominator * frac.numerator,
             denominator * frac.denominator)
     }
     
@@ -46,7 +46,7 @@ class Fraction(numerator: Int, denominator: Int) {
      * @param scalar Scalar the fraction should be multiplied with.
      */
     def multiply(scalar: Int): Fraction = {
-        new Fraction(numerator * scalar, denominator)
+        Fraction(numerator * scalar, denominator)
     }
     
     /**
@@ -55,7 +55,7 @@ class Fraction(numerator: Int, denominator: Int) {
      * @param frac Fraction the fraction should be multiplied with.
      */
     def multiply(frac: Fraction): Fraction = {
-        new Fraction(numerator * frac.numerator, denominator * frac.denominator)
+        Fraction(numerator * frac.numerator, denominator * frac.denominator)
     }
     
     /**
@@ -64,7 +64,7 @@ class Fraction(numerator: Int, denominator: Int) {
      * @param scalar Scalar the fraction should be divide by.
      */
     def divide(scalar: Int): Fraction = {
-        new Fraction(numerator, denominator * scalar)
+        Fraction(numerator, denominator * scalar)
     }
     
     /**
@@ -73,7 +73,7 @@ class Fraction(numerator: Int, denominator: Int) {
      * @param frac Fraction the fraction should be divide by.
      */
     def divide(frac: Fraction): Fraction = {
-        new Fraction(numerator * frac.denominator, denominator * frac.numerator)
+        Fraction(numerator * frac.denominator, denominator * frac.numerator)
     }
     
     /**
