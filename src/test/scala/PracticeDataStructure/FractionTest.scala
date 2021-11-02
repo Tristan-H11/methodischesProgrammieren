@@ -82,4 +82,8 @@ class FractionTest extends AnyFunSuite {
         val frac2 = Fraction(6,3)
         assert(frac2.equalInValue(2) == frac2.equalInValue(Fraction(8,4)))
     }
+    test("Equals as object"){
+        assert(frac.equals(Fraction(2,4)))
+        assert(!frac.equals(Fraction(1,2)))
+    }
  }
