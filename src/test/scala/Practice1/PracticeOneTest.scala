@@ -1,4 +1,4 @@
-package PracticeOne
+package Practice1
 
 import PracticeOne.checkParenthesis
 import org.scalatest.funsuite.AnyFunSuite

@@ -1,4 +1,4 @@
-package PracticeTwo
+package Practice2
 
 import PracticeTwo._
 import org.scalatest.funsuite.AnyFunSuite

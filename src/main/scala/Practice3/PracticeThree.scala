@@ -1,4 +1,4 @@
-package PracticeThree
+package Practice3
 
 import scala.annotation.tailrec
 
