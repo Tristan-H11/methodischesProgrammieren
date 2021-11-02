@@ -115,6 +115,7 @@ case class Fraction(numerator: Int, denominator: Int) {
      * Checks if the values represented are equal.
      */
     def equalsWithValue(frac: Fraction): Boolean = {
-        toDouble == frac.toDouble
+        val epsilon: Double = 0.0000001
+        Math.abs(toDouble - frac.toDouble) < epsilon
     }
 }
