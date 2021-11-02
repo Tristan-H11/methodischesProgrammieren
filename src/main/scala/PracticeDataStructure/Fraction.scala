@@ -1,6 +1,11 @@
 package PracticeDataStructure
 
-case class Fraction(numerator: Int, denominator: Int) {
+case class Fraction(numerator: Int, denominator: Int = 1) {
+    val epsilon: Double = 0.0000001
+    
+    if (denominator == 0) {
+        throw new NumberFormatException("Denominator may not be 0")
+    }
     
     /**
      * Returns a new fraction object with the resulting value.
@@ -17,6 +22,7 @@ case class Fraction(numerator: Int, denominator: Int) {
      * @param frac Fraction that should be added.
      */
     def add(frac: Fraction): Fraction = {
+        if (frac.toDouble < epsilon) return this
         Fraction(numerator * frac.denominator + denominator * frac.numerator,
             denominator * frac.denominator)
     }
@@ -64,6 +70,7 @@ case class Fraction(numerator: Int, denominator: Int) {
      * @param scalar Scalar the fraction should be divided by.
      */
     def divide(scalar: Int): Fraction = {
+        if (scalar == 0) throw new UnsupportedOperationException("Cannot divide by zero")
         Fraction(numerator, denominator * scalar)
     }
     
@@ -73,6 +80,7 @@ case class Fraction(numerator: Int, denominator: Int) {
      * @param frac Fraction the fraction should be divided by.
      */
     def divide(frac: Fraction): Fraction = {
+        if (frac.toDouble < epsilon) throw new UnsupportedOperationException("Cannot divide by zero")
         Fraction(numerator * frac.denominator, denominator * frac.numerator)
     }
     
@@ -107,15 +115,22 @@ case class Fraction(numerator: Int, denominator: Int) {
     /**
      * Checks if the fractions have identical numerators and denominators.
      */
-    def equalsIgnoreValue(frac: Fraction): Boolean = {
+    def equalInNumDen(frac: Fraction): Boolean = {
         numerator == frac.numerator && denominator == frac.denominator
     }
     
     /**
      * Checks if the represented values are equal.
      */
-    def equalsWithValue(frac: Fraction): Boolean = {
-        val epsilon: Double = 0.0000001
+    def equalInValue(frac: Fraction): Boolean = {
         Math.abs(toDouble - frac.toDouble) < epsilon
+    }
+    
+    /**
+     * Checks if the represented values are equal.
+     */
+    def equalInValue(scalar: Int): Boolean = {
+        val epsilon: Double = 0.0000001
+        Math.abs(toDouble - scalar) < epsilon
     }
 }
