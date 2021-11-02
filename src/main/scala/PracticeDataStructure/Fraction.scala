@@ -61,7 +61,7 @@ case class Fraction(numerator: Int, denominator: Int) {
     /**
      * Returns a new fraction object with the resulting value.
      *
-     * @param scalar Scalar the fraction should be divide by.
+     * @param scalar Scalar the fraction should be divided by.
      */
     def divide(scalar: Int): Fraction = {
         Fraction(numerator, denominator * scalar)
@@ -70,7 +70,7 @@ case class Fraction(numerator: Int, denominator: Int) {
     /**
      * Returns a new fraction object with the resulting value.
      *
-     * @param frac Fraction the fraction should be divide by.
+     * @param frac Fraction the fraction should be divided by.
      */
     def divide(frac: Fraction): Fraction = {
         Fraction(numerator * frac.denominator, denominator * frac.numerator)
