@@ -43,11 +43,10 @@ object PracticeThree {
     
     @tailrec
     def sumOfRec(a: Array[Int], result: Int = 0): Int = {
-        val head: Int = a(0)
-        if (a.length == 1) {
-            head + result
+        if (a.length == 0) {
+            result
         } else {
-            sumOfRec(a.drop(1), result + head)
+            sumOfRec(a.drop(1), result + a(0))
         }
     }
     
