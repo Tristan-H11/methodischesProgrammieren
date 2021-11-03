@@ -8,9 +8,18 @@ class PracticeThreeTest extends AnyFunSuite {
     test("Glue=' ,' Array(1,2,3)"){
         assert(glueArray(Array(1,2,3)) == "1 ,2 ,3")
     }
+    test("Glue=',' Array()"){
+        assert(glueArray(Array()) == "")
+    }
+    test("Glue=',' Array(1)"){
+        assert(glueArray(Array(1)) == "1")
+    }
     
     test("Sameelements (1,2,3) (1,2,3)"){
         assert(sameElementsOwn(Array(1,2,3), Array(1,2,3)))
+    }
+    test("Sameelements () ()"){
+        assert(sameElementsOwn(Array(), Array()))
     }
     
     test("SameElements (1,2,3) (2,3,4)"){
