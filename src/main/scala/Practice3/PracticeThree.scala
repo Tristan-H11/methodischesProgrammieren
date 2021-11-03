@@ -22,9 +22,7 @@ object PracticeThree {
     Task 2 mit Annahme eines Int Arrays
      */
     def sameElementsOwn(array1: Array[Int], array2: Array[Int]): Boolean = {
-        
         if (array1.length != array2.length) return false
-        
         for (i <- array1.indices) {
             if (array1(i) != array2(i))
                 return false
