@@ -8,6 +8,8 @@ object PracticeThree {
     Task 1
     */
     def glueArray(array: Array[Any], glue: String = " ,"): String = {
+        if (array.length == 1) return array(0).toString
+        if (array.isEmpty) return ""
         val result: StringBuilder = new StringBuilder
         for (i <- 0 until array.length - 1) {
             result.append(array(i) + glue)
