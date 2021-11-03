@@ -90,6 +90,24 @@ object PracticeThree {
     
     
     /*
+    Task 9: Bubble und Insertion Sort
+     */
+    def bubbleSort(unsortedArray: Array[Int]): Array[Int] = {
+        if (unsortedArray.length < 2) return unsortedArray
+        
+        val arrayToSort = unsortedArray.clone()
+        for (i <- arrayToSort.indices;
+             j <- 0 until arrayToSort.length - 1 - i) {
+                if (arrayToSort(j) > arrayToSort(j + 1)) {
+                    val mem: Int = arrayToSort(j)
+                    arrayToSort(j) = arrayToSort(j + 1)
+                    arrayToSort(j + 1) = mem
+                }
+        }
+        arrayToSort
+    }
+    
+    /*
     Task 10
      */
     def quickSort(arrayToSort: Array[Int]): Array[Int] = {
