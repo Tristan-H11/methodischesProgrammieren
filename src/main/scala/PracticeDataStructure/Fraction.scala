@@ -113,23 +113,16 @@ case class Fraction(numerator: Int, denominator: Int = 1) {
     }
     
     /**
-     * Checks if the fractions have identical numerators and denominators.
-     */
-    def equalInNumDen(frac: Fraction): Boolean = {
-        numerator == frac.numerator && denominator == frac.denominator
-    }
-    
-    /**
      * Checks if the represented values are equal.
      */
-    def equalInValue(frac: Fraction): Boolean = {
+    def compareValue(frac: Fraction): Boolean = {
         Math.abs(toDouble - frac.toDouble) < epsilon
     }
     
     /**
      * Checks if the represented values are equal.
      */
-    def equalInValue(scalar: Int): Boolean = {
+    def compareValue(scalar: Int): Boolean = {
         val epsilon: Double = 0.0000001
         Math.abs(toDouble - scalar) < epsilon
     }
