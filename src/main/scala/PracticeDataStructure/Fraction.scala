@@ -1,10 +1,37 @@
 package PracticeDataStructure
 
-case class Fraction(numerator: Int, denominator: Int = 1) {
-    val epsilon: Double = 0.0000001
+import PracticeAlgorithms.GreatestCommonDivisor
+
+/*
+Best practice:
+https://codereview.stackexchange.com/questions/99211/scala-fraction-addition
+Lowest common multiple wird nicht berücksichtigt. Brüche werden dirty verrechnet.
+Entsprechend sind nicht alle Fälle eines Overflows abgedeckt
+ */
+case class Fraction(inputNumerator: Int, inputDenominator: Int = 1) {
+    var numerator: Int = inputNumerator
+    var denominator: Int = inputDenominator
     
     if (denominator == 0) {
         throw new NumberFormatException("Denominator may not be 0")
+    }
+    reduce(this)
+    
+    /**
+     * Negates a fraction.
+     *
+     * @param frac Fraction that should be negated.
+     */
+    def negate(frac: Fraction): Fraction = {
+        Fraction(-frac.numerator, frac.denominator)
+    }
+    
+    /**
+     * Returns the reciprocal of a fraction.
+     * @param frac Fraction the reciprocal is wanted of.
+     */
+    def reciprocal(frac: Fraction): Fraction = {
+        Fraction(frac.denominator, frac.numerator)
     }
     
     /**
@@ -13,7 +40,7 @@ case class Fraction(numerator: Int, denominator: Int = 1) {
      * @param scalar Scalar that should be added.
      */
     def add(scalar: Int): Fraction = {
-        Fraction(numerator + scalar * denominator, denominator)
+        add(Fraction(scalar))
     }
     
     /**
@@ -22,9 +49,24 @@ case class Fraction(numerator: Int, denominator: Int = 1) {
      * @param frac Fraction that should be added.
      */
     def add(frac: Fraction): Fraction = {
-        if (frac.toDouble < epsilon) return this
-        Fraction(numerator * frac.denominator + denominator * frac.numerator,
-            denominator * frac.denominator)
+        if (frac.numerator == 0) return this
+        val newNumerator = safeAdd(
+            safeMultiply(numerator, frac.denominator),
+            safeMultiply(denominator, frac.numerator))
+        val newDenominator = safeMultiply(denominator, frac.denominator)
+        Fraction(newNumerator, newDenominator)
+    }
+    
+    /**
+     * Adds two numbers and handles over- or underflow.
+     */
+    private def safeAdd(a: Int, b: Int): Int = {
+        if (a > 0 && b > Integer.MAX_VALUE - a) {
+            throw new UnsupportedOperationException("Integer Overflow")
+        } else if (a < 0 && b < Integer.MIN_VALUE - a) {
+            throw new UnsupportedOperationException("Integer Underflow")
+        }
+        a + b
     }
     
     /**
@@ -33,7 +75,7 @@ case class Fraction(numerator: Int, denominator: Int = 1) {
      * @param scalar Scalar that should be subtracted.
      */
     def subtract(scalar: Int): Fraction = {
-        Fraction(numerator - scalar * denominator, denominator)
+        subtract(Fraction(scalar))
     }
     
     /**
@@ -42,8 +84,7 @@ case class Fraction(numerator: Int, denominator: Int = 1) {
      * @param frac Fraction that should be subtracted.
      */
     def subtract(frac: Fraction): Fraction = {
-        Fraction(numerator * frac.denominator - denominator * frac.numerator,
-            denominator * frac.denominator)
+        add(negate(frac))
     }
     
     /**
@@ -52,7 +93,7 @@ case class Fraction(numerator: Int, denominator: Int = 1) {
      * @param scalar Scalar the fraction should be multiplied with.
      */
     def multiply(scalar: Int): Fraction = {
-        Fraction(numerator * scalar, denominator)
+        multiply(Fraction(scalar))
     }
     
     /**
@@ -61,7 +102,19 @@ case class Fraction(numerator: Int, denominator: Int = 1) {
      * @param frac Fraction the fraction should be multiplied with.
      */
     def multiply(frac: Fraction): Fraction = {
-        Fraction(numerator * frac.numerator, denominator * frac.denominator)
+        Fraction(safeMultiply(numerator, frac.numerator), safeMultiply(denominator, frac.denominator))
+    }
+    
+    /**
+     * Multiplies two numbers and handles overflow.
+     */
+    private def safeMultiply(a: Int, b: Int): Int = {
+        val x: Long = a.toLong * b
+        if (x > Integer.MAX_VALUE) {
+            throw new UnsupportedOperationException("Integer Overflow")
+        } else {
+            a * b
+        }
     }
     
     /**
@@ -71,7 +124,7 @@ case class Fraction(numerator: Int, denominator: Int = 1) {
      */
     def divide(scalar: Int): Fraction = {
         if (scalar == 0) throw new UnsupportedOperationException("Cannot divide by zero")
-        Fraction(numerator, denominator * scalar)
+        divide(Fraction(scalar))
     }
     
     /**
@@ -80,8 +133,8 @@ case class Fraction(numerator: Int, denominator: Int = 1) {
      * @param frac Fraction the fraction should be divided by.
      */
     def divide(frac: Fraction): Fraction = {
-        if (frac.toDouble < epsilon) throw new UnsupportedOperationException("Cannot divide by zero")
-        Fraction(numerator * frac.denominator, denominator * frac.numerator)
+        if (frac.numerator == 0) throw new UnsupportedOperationException("Cannot divide by zero")
+        multiply(reciprocal(frac))
     }
     
     /**
@@ -107,23 +160,26 @@ case class Fraction(numerator: Int, denominator: Int = 1) {
      * Overrides equals and checks for same type and same numerator and same denominator.
      */
     override def equals(obj: Any): Boolean = {
-        obj.isInstanceOf[Fraction] &&
-            obj.asInstanceOf[Fraction].numerator == numerator &&
-            obj.asInstanceOf[Fraction].denominator == denominator
+        obj match {
+            case fraction: Fraction =>
+                fraction.numerator == numerator &&
+                    fraction.denominator == denominator
+            case _ => false
+        }
     }
     
     /**
      * Checks if the represented values are equal.
      */
-    def compareValue(frac: Fraction): Boolean = {
-        Math.abs(toDouble - frac.toDouble) < epsilon
+    def equals(scalar: Int): Boolean = {
+        equals(Fraction(scalar))
     }
     
-    /**
-     * Checks if the represented values are equal.
-     */
-    def compareValue(scalar: Int): Boolean = {
-        val epsilon: Double = 0.0000001
-        Math.abs(toDouble - scalar) < epsilon
+    private def reduce(frac: Fraction): Unit = {
+        val gcd: Int = GreatestCommonDivisor.gcd(inputNumerator, inputDenominator)
+        if (gcd > 1) {
+            numerator = inputNumerator / gcd
+            denominator = inputDenominator / gcd
+        }
     }
 }
