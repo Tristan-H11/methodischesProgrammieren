@@ -61,13 +61,10 @@ class FractionTest extends AnyFunSuite {
         assertThrows[ArithmeticException] {
             Fraction(Integer.MAX_VALUE).multiply(Fraction(Integer.MAX_VALUE, 2))
         }
-        assertThrows[ArithmeticException] {
-            /*
-            Sollte eigentlich auch nicht werfen!!
-             */
-            Fraction(1, Integer.MAX_VALUE)
-                .multiply(Fraction(Integer.MAX_VALUE, 2)) == Fraction(1, 2)
-        }
+        assert(
+            Fraction(1, 2)
+                .multiply(Fraction(Integer.MAX_VALUE, 2)) == Fraction(Integer.MAX_VALUE, 4)
+        )
     }
     
     test("Divide 2/4 by 1/2") {
