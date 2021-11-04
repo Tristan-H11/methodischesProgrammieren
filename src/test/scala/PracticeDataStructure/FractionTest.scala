@@ -27,11 +27,8 @@ class FractionTest extends AnyFunSuite {
             Fraction(Integer.MAX_VALUE).add(Fraction(Integer.MAX_VALUE, 2))
         }
         assertThrows[ArithmeticException] {
-            /*
-            Der darf eigentlich nicht werfen!!
-            */
-            Fraction(1, Integer.MAX_VALUE)
-                .add(Fraction(Integer.MAX_VALUE, 2)) == Fraction(Integer.MAX_VALUE, Integer.MAX_VALUE * 2)
+            Fraction(1, 5)
+                .add(Fraction(Integer.MAX_VALUE -2, 2)) == Fraction(Integer.MAX_VALUE -1, 10)
         }
     }
     
