@@ -23,10 +23,10 @@ class FractionTest extends AnyFunSuite {
         assert(frac.add(Fraction(2, 4)) equals Fraction(1))
     }
     test("Overflow addition") {
-        assertThrows[UnsupportedOperationException] {
+        assertThrows[ArithmeticException] {
             Fraction(Integer.MAX_VALUE).add(Fraction(Integer.MAX_VALUE, 2))
         }
-        assertThrows[UnsupportedOperationException] {
+        assertThrows[ArithmeticException] {
             /*
             Der darf eigentlich nicht werfen!!
             */
@@ -58,10 +58,10 @@ class FractionTest extends AnyFunSuite {
         assert(frac.multiply(Fraction(2, 2)) equals Fraction(1, 2))
     }
     test("Overflow multiplication") {
-        assertThrows[UnsupportedOperationException] {
+        assertThrows[ArithmeticException] {
             Fraction(Integer.MAX_VALUE).multiply(Fraction(Integer.MAX_VALUE, 2))
         }
-        assertThrows[UnsupportedOperationException] {
+        assertThrows[ArithmeticException] {
             /*
             Sollte eigentlich auch nicht werfen!!
              */
@@ -77,10 +77,10 @@ class FractionTest extends AnyFunSuite {
         assert(frac.divide(2) equals Fraction(1, 4))
     }
     test("Division by zero exception") {
-        assertThrows[UnsupportedOperationException] {
+        assertThrows[ArithmeticException] {
             frac.divide(0)
         }
-        assertThrows[UnsupportedOperationException] {
+        assertThrows[ArithmeticException] {
             frac.divide(Fraction(0))
         }
     }

@@ -62,9 +62,9 @@ case class Fraction(inputNumerator: Int, inputDenominator: Int = 1) {
      */
     private def safeAdd(a: Int, b: Int): Int = {
         if (a > 0 && b > Integer.MAX_VALUE - a) {
-            throw new UnsupportedOperationException("Integer Overflow")
+            throw new ArithmeticException("Integer Overflow")
         } else if (a < 0 && b < Integer.MIN_VALUE - a) {
-            throw new UnsupportedOperationException("Integer Underflow")
+            throw new ArithmeticException("Integer Underflow")
         }
         a + b
     }
@@ -111,7 +111,7 @@ case class Fraction(inputNumerator: Int, inputDenominator: Int = 1) {
     private def safeMultiply(a: Int, b: Int): Int = {
         val x: Long = a.toLong * b
         if (x > Integer.MAX_VALUE) {
-            throw new UnsupportedOperationException("Integer Overflow")
+            throw new ArithmeticException("Integer Overflow")
         } else {
             a * b
         }
@@ -123,7 +123,7 @@ case class Fraction(inputNumerator: Int, inputDenominator: Int = 1) {
      * @param scalar Scalar the fraction should be divided by.
      */
     def divide(scalar: Int): Fraction = {
-        if (scalar == 0) throw new UnsupportedOperationException("Cannot divide by zero")
+        if (scalar == 0) throw new ArithmeticException("Cannot divide by zero")
         divide(Fraction(scalar))
     }
     
@@ -133,7 +133,7 @@ case class Fraction(inputNumerator: Int, inputDenominator: Int = 1) {
      * @param frac Fraction the fraction should be divided by.
      */
     def divide(frac: Fraction): Fraction = {
-        if (frac.numerator == 0) throw new UnsupportedOperationException("Cannot divide by zero")
+        if (frac.numerator == 0) throw new ArithmeticException("Cannot divide by zero")
         multiply(reciprocal(frac))
     }
     
