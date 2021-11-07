@@ -30,9 +30,40 @@ object SortingAlgorithms {
         }
     }
     
-//    def mergeSort(arrayToSort: Array[Int]): Array[Int]={
-//        if(arrayToSort.length < 2) return arrayToSort
-//
-//
-//    }
+    def mergeSort(a: Array[Int]): Array[Int] = {
+        if (a.length == 1) {
+            a
+        } else {
+            val (left, right) = a.splitAt(a.length / 2)
+            merge(mergeSort(left), mergeSort(right))
+        }
+    }
+    
+    def merge(left: Array[Int], right: Array[Int]): Array[Int] = {
+        val newA = Array.ofDim[Int](left.length + right.length)
+        var indexLeft = 0
+        var indexRight = 0
+        var i = 0
+        while (indexLeft < left.length && indexRight < right.length) {
+            if (left(indexLeft) <= right(indexRight)) {
+                newA(i) = left(indexLeft)
+                indexLeft += 1
+            } else {
+                newA(i) = right(indexRight)
+                indexRight += 1
+            }
+            i += 1
+        }
+        while (indexLeft < left.length) {
+            newA(i) = left(indexLeft)
+            indexLeft += 1
+            i += 1
+        }
+        while (indexRight < right.length) {
+            newA(i) = right(indexRight)
+            indexRight += 1
+            i += 1
+        }
+        newA
+    }
 }
