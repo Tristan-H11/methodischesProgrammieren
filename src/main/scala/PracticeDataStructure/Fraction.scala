@@ -28,6 +28,7 @@ case class Fraction(inputNumerator: Int, inputDenominator: Int = 1) {
     
     /**
      * Returns the reciprocal of a fraction.
+     *
      * @param frac Fraction the reciprocal is wanted of.
      */
     def reciprocal(frac: Fraction): Fraction = {
