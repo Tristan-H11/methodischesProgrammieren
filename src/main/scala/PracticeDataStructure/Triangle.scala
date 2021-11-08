@@ -12,7 +12,7 @@ case class Triangle(points: Tuple3[Point, Point, Point]) extends Polygon {
     /**
      * @inheritdoc
      */
-    override def lengthOfSides(): Tuple3[Double, Double, Double] = {
+    override def lengthOfSides(): (Double, Double, Double) = {
         (
             points._1.distance(points._2),
             points._1.distance(points._3),
