@@ -1,5 +1,3 @@
-import helloWorld.HelloWorld
-
 /**
  * Main-class.
  */
