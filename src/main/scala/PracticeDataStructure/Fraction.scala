@@ -15,7 +15,7 @@ case class Fraction(inputNumerator: Int, inputDenominator: Int = 1) {
     if (denominator == 0) {
         throw new NumberFormatException("Denominator may not be 0")
     }
-    reduce(this)
+    reduce()
     
     /**
      * Negates a fraction.
@@ -175,7 +175,7 @@ case class Fraction(inputNumerator: Int, inputDenominator: Int = 1) {
         equals(Fraction(scalar))
     }
     
-    private def reduce(frac: Fraction): Unit = {
+    private def reduce(): Unit = {
         val gcd: Int = GreatestCommonDivisor.gcd(inputNumerator, inputDenominator)
         if (gcd > 1) {
             numerator = inputNumerator / gcd
