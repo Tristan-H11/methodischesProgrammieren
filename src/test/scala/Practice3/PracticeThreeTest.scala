@@ -1,5 +1,6 @@
 package Practice3
 
+import PracticeAlgorithms.SortingAlgorithms.mergeSort
 import PracticeThree._
 import org.scalatest.funsuite.AnyFunSuite
 
@@ -79,6 +80,25 @@ class PracticeThreeTest extends AnyFunSuite {
     }
     test("quickSort (4)"){
         assert(quickSort(Array(4)) sameElements Array(4))
+    }
+    
+    test("mergeSort (1,2,4,3)"){
+        assert(mergeSort(Array(1, 2, 4, 3)) sameElements Array(1, 2, 3, 4))
+    }
+    test("mergeSort (1,2,3,4)"){
+        assert(mergeSort(Array(1, 2, 4, 3)) sameElements Array(1, 2, 3, 4))
+    }
+    test("mergeSort ()"){
+        assert(mergeSort(Array[Int]()) sameElements Array[Int]())
+    }
+    test("mergeSort (4,3,2,1)"){
+        assert(mergeSort(Array(4,3,2,1)) sameElements Array(1,2,3,4))
+    }
+    test("mergeSort (4,3)"){
+        assert(mergeSort(Array(4,3)) sameElements Array(3,4))
+    }
+    test("mergeSort (4)"){
+        assert(mergeSort(Array(4)) sameElements Array(4))
     }
     
     test("Array(1,2,3) equalsButSorted Array(2,1,3)"){
