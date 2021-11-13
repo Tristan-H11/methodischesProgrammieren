@@ -14,7 +14,7 @@ object PracticeTwo {
             exponent = -expo
             basis = 1 / basis
         }
-        for (i <- 0 until exponent) {
+        for (_ <- 0 until exponent) {
             result *= basis
         }
         result
