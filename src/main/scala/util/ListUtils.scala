@@ -14,10 +14,6 @@ object ListUtils {
     }
     
     def getPrimes(list: List[Int]): List[Int] = {
-        val result: mutable.ListBuffer[Int] = ListBuffer()
-        list.foreach(e => if (isPrime(e)) {
-            result.addOne(e)
-        })
-        result.toList
+        list.filter(isPrime)
     }
 }
