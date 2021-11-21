@@ -1,4 +1,4 @@
-package PracticeDataStructure
+package PracticeDataStructure.Mathematical
 
 case class Triangle(points: (Point, Point, Point)) extends Polygon {
     
