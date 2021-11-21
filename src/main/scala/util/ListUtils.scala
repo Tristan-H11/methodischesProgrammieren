@@ -1,5 +1,7 @@
 package util
 
+import Practice2.PracticeTwo._
+
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 
@@ -11,6 +13,11 @@ object ListUtils {
         result.toList
     }
     
-    
-
+    def getPrimes(list: List[Int]): List[Int] = {
+        val result: mutable.ListBuffer[Int] = ListBuffer()
+        list.foreach(e => if (isPrime(e)) {
+            result.addOne(e)
+        })
+        result.toList
+    }
 }
