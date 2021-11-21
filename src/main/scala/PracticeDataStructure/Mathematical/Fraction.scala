@@ -1,4 +1,4 @@
-package PracticeDataStructure
+package PracticeDataStructure.Mathematical
 
 import PracticeAlgorithms.GreatestCommonDivisor
 
@@ -176,6 +176,9 @@ case class Fraction(inputNumerator: Int, inputDenominator: Int = 1) {
         equals(Fraction(scalar))
     }
     
+    /**
+     * Reduces this fraction.
+     */
     private def reduce(): Unit = {
         val gcd: Int = GreatestCommonDivisor.gcd(inputNumerator, inputDenominator)
         if (gcd > 1) {
