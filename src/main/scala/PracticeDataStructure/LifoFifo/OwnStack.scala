@@ -1,13 +1,13 @@
 package PracticeDataStructure.LifoFifo
 
 import java.util.EmptyStackException
-import scala.collection.mutable.ListBuffer
+import PracticeDataStructure.Lists.LinkedList
 
 class OwnStack[A] {
-    private val values: ListBuffer[A] = ListBuffer[A]()
+    private val values: LinkedList[A] = new LinkedList[A]()
     
     def push(item: A): OwnStack[A] = {
-        values.addOne(item)
+        values.add(item)
         this
     }
     
