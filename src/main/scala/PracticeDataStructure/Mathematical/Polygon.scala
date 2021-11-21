@@ -1,4 +1,4 @@
-package PracticeDataStructure
+package PracticeDataStructure.Mathematical
 
 trait Polygon {
     /**
