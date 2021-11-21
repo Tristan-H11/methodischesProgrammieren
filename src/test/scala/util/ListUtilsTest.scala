@@ -9,7 +9,7 @@ class ListUtilsTest extends AnyFunSuite{
         assert(flatten(list1) == List(1, 2, 3, 4, 5))
     }
     test("appendAll List of empty"){
-        val list1: List[List[Int]] = List(List(),List())
+        val list1: List[List[Int]] = List()
         assert(flatten(list1) == List())
     }
     
