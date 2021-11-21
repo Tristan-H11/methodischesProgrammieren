@@ -67,6 +67,7 @@ object PracticeOne {
         }
     }
     
+    //noinspection DuplicatedCode
     def intersectionWithPoints(pointOneA: (Double, Double), pointOneB: (Double, Double),
                                pointTwoA: (Double, Double), pointTwoB: (Double, Double)): String = {
         
