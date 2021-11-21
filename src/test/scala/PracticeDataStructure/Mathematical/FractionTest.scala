@@ -1,4 +1,4 @@
-package PracticeDataStructure
+package PracticeDataStructure.Mathematical
 
 import org.scalatest.funsuite.AnyFunSuite
 
