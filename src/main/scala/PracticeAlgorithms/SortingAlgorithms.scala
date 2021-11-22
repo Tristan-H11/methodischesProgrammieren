@@ -31,7 +31,7 @@ object SortingAlgorithms {
     }
     
     def mergeSort(a: Array[Int]): Array[Int] = {
-        if (a.length == 1) {
+        if (a.length <= 1) {
             a
         } else {
             val (left, right) = a.splitAt(a.length / 2)
