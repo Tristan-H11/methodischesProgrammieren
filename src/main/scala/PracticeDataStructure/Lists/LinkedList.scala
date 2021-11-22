@@ -2,10 +2,14 @@ package PracticeDataStructure.Lists
 
 import scala.collection.{AbstractIterator, immutable}
 
-class LinkedList[A](head: A) extends immutable.Iterable[A] {
+class LinkedList[A]() extends immutable.Iterable[A] {
     self =>
+    private var firstNode: Node[A] = _
     
-    private var firstNode: Node[A] = if (head != null) new Node[A](head) else null
+    def this(value: A = null) {
+        this()
+        firstNode = if (value != null) new Node[A](value) else null
+    }
     
     override def isEmpty: Boolean = {
         firstNode == null
