@@ -11,9 +11,9 @@ class OwnStack[A] {
         this
     }
     
-    def pop(): A = {
-        if(values.isEmpty)
-            throw new EmptyStackException
-        values.remove(values.size - 1)
-    }
+//    def pop(): A = {
+//        if(values.isEmpty)
+//            throw new EmptyStackException
+//        values.remove(values.size - 1)
+//    }
 }
