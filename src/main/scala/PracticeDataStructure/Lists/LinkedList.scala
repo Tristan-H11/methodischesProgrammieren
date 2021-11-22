@@ -11,7 +11,6 @@ class LinkedList[A]() extends immutable.Iterable[A] {
         firstNode = if (value != null) new Node[A](value) else null
     }
     
-    
     override def isEmpty: Boolean = {
         firstNode == null
     }
@@ -43,10 +42,6 @@ class LinkedList[A]() extends immutable.Iterable[A] {
     }
     
     def get(index: Int): A = {
-        getNode(index).value
-    }
-    
-    private def getNode(index: Int): Node[A] = {
         if (index >= length) throw new IndexOutOfBoundsException
         var node = firstNode
         var nextNode = node.next
@@ -54,7 +49,7 @@ class LinkedList[A]() extends immutable.Iterable[A] {
             node = nextNode
             nextNode = node.next
         }
-        node
+        node.value
     }
     
     def addAll(list: LinkedList[A]): LinkedList[A] = {
