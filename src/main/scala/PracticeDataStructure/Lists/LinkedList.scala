@@ -61,13 +61,13 @@ class LinkedList[A]() extends immutable.Iterable[A] {
     }
     
     def iterator: Iterator[A] = new AbstractIterator[A] {
-        private var position: Int = 0
+        private var position: Node[A] = firstNode
         
-        def hasNext: Boolean = position < self.length
+        def hasNext: Boolean = position.hasNext
         
         def next(): A = {
-            val value: A = get(position)
-            position += 1
+            val value: A = position.value
+            position = position.next
             value
         }
         
@@ -77,4 +77,8 @@ class LinkedList[A]() extends immutable.Iterable[A] {
     def apply(i: Int): A = get(i)
 }
 
-sealed class Node[A](var value: A, var next: Node[A] = null) {}
+sealed class Node[A](var value: A, var next: Node[A] = null) {
+    def hasNext: Boolean = {
+        next != null
+    }
+}
