@@ -52,7 +52,7 @@ class LinkedList[A]() extends immutable.Iterable[A] {
         node.value
     }
     
-    def addAll(list: LinkedList[A]): LinkedList[A] = {
+    def addAll(list: Iterable[A]): LinkedList[A] = {
         list.foreach(add)
         this
         //        for(i <- list){
