@@ -28,6 +28,7 @@ class LinkedListTest extends AnyFunSuite {
         assert(list1.iterator.sameElements(new LinkedList[Int](1).add(2).add(3).add(4).add(2).add(4)))
     }
     
+    
 //    test("remove 2 from 1,2,3"){
 //        val list1 = new LinkedList[Int]().add(1).add(2).add(3)
 //        list1.remove(2)
