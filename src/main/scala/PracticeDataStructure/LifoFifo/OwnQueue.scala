@@ -15,4 +15,12 @@ class OwnQueue[A] {
             throw new IndexOutOfBoundsException
         values.remove(0)
     }
+    
+    def peek: A = {
+        values.head
+    }
+    
+    def isEmpty: Boolean = {
+        values.isEmpty
+    }
 }

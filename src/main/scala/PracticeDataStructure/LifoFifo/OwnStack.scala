@@ -11,9 +11,17 @@ class OwnStack[A] {
         this
     }
     
+    def peek: A = {
+        values.get(values.length -1)
+    }
+    
 //    def pop(): A = {
 //        if(values.isEmpty)
 //            throw new EmptyStackException
-//        values.remove(values.size - 1)
+//        values.remove(values.length - 1)
 //    }
+    
+    def isEmpty: Boolean = {
+        values.isEmpty
+    }
 }
